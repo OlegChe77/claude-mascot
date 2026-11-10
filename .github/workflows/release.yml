@@ -20,6 +20,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Create the release first: parallel uploads from electron-builder would otherwise create duplicates.
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/')
+        run: gh release view "$env:GITHUB_REF_NAME" 2>$null; if ($LASTEXITCODE -ne 0) { gh release create "$env:GITHUB_REF_NAME" --title "$env:GITHUB_REF_NAME" --notes "" }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and publish release
         run: npm run release
         env:
