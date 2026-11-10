@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Маскот — демо</title>
+<style>
+:root{--text-primary:#222;--text-secondary:#666}
+body{font-family:Segoe UI,sans-serif;background:#f5f4ef;margin:0;padding:24px;max-width:720px}
+button{font:inherit;padding:6px 12px;border:1px solid #bbb;border-radius:8px;background:#fff;cursor:pointer}
+.scr{position:relative;height:300px;background:#2b4f74;border-radius:12px 12px 0 0;overflow:hidden}
+.m{--c:#E08463;--s:#C2603F;--h:#F8C3AC;position:absolute;left:0;bottom:0;width:110px;height:92px;cursor:pointer}
+.m.mad1{--c:#DE6E52;--s:#B84A33;--h:#F4A992}
+.m.mad2{--c:#DA4A3B;--s:#A92D24;--h:#F28B7C}
+.in{width:110px;height:92px;transform-origin:100% 100%;transition:transform .22s}
+.in.tilt{transform:rotate(-10deg)}.in.hop{transform:translateY(-12px)}.in.tilt.hop{transform:rotate(-15deg) translateY(-8px)}
+.m .b{fill:var(--c)}.m .s{fill:var(--s)}.m .h{fill:var(--h)}
+.m svg *{transform-box:fill-box;transform-origin:center;transition:fill .6s,opacity .25s}
+.shake svg{animation:sh .07s 8 alternate}@keyframes sh{from{translate:-3px 0}to{translate:3px 0}}
+.wave .al{animation:wv .18s 6 alternate}.fist .al{animation:wv .18s infinite alternate}.fist .ar{animation:wv .18s infinite alternate-reverse}
+@keyframes wv{to{transform:translateY(-7px) rotate(-12deg)}}
+.walk .lA{animation:lg .2s infinite alternate}.walk .lB{animation:lg .2s infinite alternate-reverse}@keyframes lg{to{transform:translateY(-4px)}}
+.walk svg{animation:bob .2s infinite alternate}@keyframes bob{to{transform:translateY(-2px)}}
+.blink .eye{transform:scaleY(.1)}.look .eyes{transform:translateX(-3px)}
+.eyes,.eye{transition:transform .12s!important}
+.b1,.b2,.mc,.mo{opacity:0}.mad1 .b1,.mad2 .b2{opacity:1}
+.m:not(.mad1):not(.mad2) .m0,.mad1 .m1,.mad2 .m2{opacity:1}
+.m.talking .mc{opacity:0}.m.talking .mo{opacity:1}
+.stm{position:absolute;top:-6px;width:10px;height:10px;border-radius:50%;background:#e6e4dc;opacity:0}
+.mad2 .stm{animation:st 1s infinite}.stm{left:38px}.stm+.stm{left:62px;animation-delay:.5s!important}
+@keyframes st{0%{opacity:.9;transform:translateY(0)}100%{opacity:0;transform:translateY(-26px) scale(1.8)}}
+.bub{position:absolute;bottom:110px;left:0;background:#fff;color:#2C2C2A;font-size:14px;padding:8px 12px;border-radius:14px;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap}
+.bub.on{opacity:1;transform:scale(1)}.bub.pulse{transform:scale(1.1)}.bub.r{background:#FCEBEB;color:#791F1F}
+.tb{height:36px;background:#1f1f1e;border-radius:0 0 12px 12px;display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:0 12px;color:#ccc;font-size:12px}
+.tray{width:16px;height:16px;background:#E08463;border-radius:50%;position:relative}
+.tray.ping::after{content:"";position:absolute;right:-3px;top:-3px;width:7px;height:7px;border-radius:50%;background:#E24B4A}
+</style></head><body>
+<div class="scr" id="scr">
+  <div style="position:absolute;left:24px;top:24px;width:210px;height:120px;background:#f1efe8;border-radius:8px;opacity:.25"></div>
+  <div style="position:absolute;left:24px;top:156px;color:#cfe0f0;font-size:13px">Claude свёрнут…</div>
+  <div class="bub" id="bub"></div>
+  <div class="m" id="m" title="Нажми — открою Claude"><div class="stm"></div><div class="stm"></div>
+   <div class="in" id="inn">
+    <svg viewBox="0 0 120 100" width="110" height="92">
+      <defs><clipPath id="cb"><rect x="18" y="10" width="84" height="72" rx="28"/></clipPath></defs>
+      <rect class="s lA" x="30" y="72" width="10" height="24" rx="5"/><rect class="s lB" x="45" y="72" width="10" height="24" rx="5"/>
+      <rect class="s lA" x="66" y="72" width="10" height="24" rx="5"/><rect class="s lB" x="81" y="72" width="10" height="24" rx="5"/>
+      <g class="al"><ellipse class="s" cx="15" cy="52" rx="11" ry="9"/><ellipse class="b" cx="14" cy="50" rx="9" ry="7"/></g>
+      <g class="ar"><ellipse class="s" cx="105" cy="52" rx="11" ry="9"/></g>
+      <g clip-path="url(#cb)"><rect class="s" x="18" y="10" width="84" height="72"/><ellipse class="b" cx="54" cy="38" rx="56" ry="40"/><ellipse class="h" cx="42" cy="22" rx="20" ry="7" transform="rotate(-14 42 22)" opacity=".75"/></g>
+      <ellipse cx="33" cy="58" rx="7" ry="4" fill="#F39A86" opacity=".7"/><ellipse cx="87" cy="58" rx="7" ry="4" fill="#F39A86" opacity=".7"/>
+      <g class="eyes"><g class="eye"><ellipse cx="44" cy="44" rx="7" ry="9" fill="#2a1a14"/><circle cx="46.5" cy="40.5" r="2.8" fill="#fff"/><circle cx="42" cy="47.5" r="1.2" fill="#fff"/></g><g class="eye"><ellipse cx="76" cy="44" rx="7" ry="9" fill="#2a1a14"/><circle cx="78.5" cy="40.5" r="2.8" fill="#fff"/><circle cx="74" cy="47.5" r="1.2" fill="#fff"/></g></g>
+      <g fill="none" stroke="#2a1a14" stroke-width="3.5" stroke-linecap="round">
+        <path class="b1" d="M35 31 L51 33 M85 31 L69 33"/><path class="b2" d="M34 28 L52 36 M86 28 L68 36"/>
+        <path class="mc m0" d="M53 61 Q60 67 67 61"/><path class="mc m1" d="M54 64 L66 64"/><path class="mc m2" d="M52 67 Q60 59 68 67"/>
+      </g>
+      <ellipse class="mo" cx="60" cy="63" rx="5.5" ry="5" fill="#5a1e14"/>
+    </svg>
+   </div>
+  </div>
+</div>
+<div class="tb"><span>RU</span><div class="tray" id="tray"></div><span>12:34</span></div>
+<div style="display:flex;gap:8px;align-items:center;margin:14px 0 4px;flex-wrap:wrap">
+  <button id="go">Прислать уведомление</button>
+  <button id="cl">Открыть Claude</button>
+  <label style="font-size:14px;color:var(--text-secondary);display:flex;gap:6px;align-items:center"><input type="checkbox" id="snd" checked> Звук</label>
+</div>
+<p id="st" style="font-size:14px;color:var(--text-primary);margin:6px 0 2px">Ждёт уведомления</p>
+<p style="font-size:13px;color:var(--text-secondary);margin:0">3 выглядывания с паузой 7 с, потом выходит и злится 20 с. Открыл Claude или нажал на маскота — он сразу уходит.</p>
+<script>
+const $=id=>document.getElementById(id),scr=$('scr'),m=$('m'),inn=$('inn'),bub=$('bub'),tray=$('tray'),snd=$('snd'),st=$('st'),eyes=m.querySelector('.eyes');
+const P=[["Эй! Claude ждёт твоего ответа","Тук-тук, там вопрос!","Пс-с… загляни в Claude","Claude просит разрешения","Я тут! Посмотри в Claude","Кажется, нужна твоя помощь"],["Ну ау-у-у!","Я вообще-то жду…","Хм. Меня игнорируют?","Claude всё ещё ждёт!","Ну пожа-а-алуйста","Бу-бу-бу… никто не слушает"],["Да ответь уже!!!","Я ЗЛЮСЬ!","Всё, я обиделся!","Ну сколько можно?!","Сейчас весь экран закрою!","Хватит меня игнорить!","Я тут хожу, а ты где?!","Ррррр! Бу-бу-бу!"]];
+let ac,rid=0,lvl=0,last='',x=0,busy=false;
+const Wd=()=>scr.clientWidth;
+const sleep=async ms=>{const id=rid;await new Promise(r=>setTimeout(r,ms));if(id!==rid)throw 0};
+const frame=async()=>{const id=rid;const t=await new Promise(requestAnimationFrame);if(id!==rid)throw 0;return t};
+function A_(){return ac=ac||new AudioContext()}
+function tone(f,d,type,to,t0,v){if(!snd.checked)return;const a=A_(),o=a.createOscillator(),g=a.createGain(),s=a.currentTime+(t0||0);o.type=type||'sine';o.frequency.setValueAtTime(f,s);if(to)o.frequency.exponentialRampToValueAtTime(to,s+d);g.gain.setValueAtTime(v||.07,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g).connect(a.destination);o.start(s);o.stop(s+d)}
+function mumble(text){const n=Math.min(14,Math.max(2,(text.match(/[аеёиоуыэюя]/gi)||[]).length)),base=[430,320,180][lvl],stp=[.12,.105,.09][lvl],dur=stp*.8;
+ for(let i=0;i<n;i++){setTimeout(()=>{m.classList.add('talking');setTimeout(()=>m.classList.remove('talking'),dur*800)},i*stp*1000)}
+ if(!snd.checked)return;const a=A_(),s=a.currentTime+.02,f=a.createBiquadFilter();f.type='lowpass';f.frequency.value=[1700,1400,1100][lvl];f.Q.value=4;f.connect(a.destination);
+ for(let i=0;i<n;i++){const t=s+i*stp,o=a.createOscillator(),g=a.createGain(),f0=base*(.85+Math.random()*.35);o.type=lvl===2?'sawtooth':'square';o.frequency.setValueAtTime(f0,t);o.frequency.linearRampToValueAtTime(f0*(lvl===2?.75:1.08),t+dur);g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(lvl===2?.11:.08,t+.015);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g).connect(f);o.start(t);o.stop(t+dur+.02)}
+ if(lvl===2)tone(85,n*stp,'sawtooth',65,0,.04)}
+const pop=()=>tone(320,.16,'sine',880,0,.12),bye=()=>tone(760,.22,'sine',260,0,.12),thump=()=>{tone(110,.09,'sine',55,0,.25)};
+function cls(c,ms){m.classList.add(c);setTimeout(()=>m.classList.remove(c),ms)}
+function hop(){inn.classList.add('hop');setTimeout(()=>inn.classList.remove('hop'),230)}
+function place(t){m.style.transition=t?`transform ${t}ms cubic-bezier(.3,1.4,.5,1)`:'none';m.style.transform=`translateX(${x}px)`;posBub()}
+function posBub(){const w=bub.offsetWidth,W=Wd();bub.style.left=Math.max(8,Math.min(x+55-w/2,W-w-8))+'px'}
+function say(){const L=P[lvl];let p;do{p=L[Math.floor(Math.random()*L.length)]}while(p===last);last=p;bub.textContent=p;bub.classList.toggle('r',lvl===2);bub.classList.add('on','pulse');posBub();setTimeout(()=>bub.classList.remove('pulse'),180);mumble(p)}
+function setLvl(l){lvl=l;m.classList.toggle('mad1',l===1);m.classList.toggle('mad2',l===2)}
+const A=[[()=>cls('wave',1100),()=>cls('look',800),hop],[()=>cls('shake',560),()=>cls('wave',1100),hop]];
+async function peek(n,l){setLvl(l);st.textContent=`Выглядывает из угла: ${n} из 3`;inn.classList.add('tilt');x=Wd()-78;place(500);pop();await sleep(550);
+ for(let i=0;i<3;i++){A[l][i]();say();await sleep(1900)}
+ bub.classList.remove('on');x=Wd()+5;place(450);bye();await sleep(500);inn.classList.remove('tilt')}
+async function wait(s){for(let t=s;t>0;t--){st.textContent=`Спрятался. Снова вылезет через ${t} с`;await sleep(1000)}}
+async function walkTo(tx,sp){let p=await frame();const dir=Math.sign(tx-x);eyes.style.transform=`translateX(${dir*3}px)`;while((tx-x)*dir>0){const t=await frame();x+=dir*sp*(t-p)/1000;p=t;if((tx-x)*dir<0)x=tx;place(0)}}
+async function rage(){setLvl(2);m.classList.add('walk','fist');x=Wd()+5;place(0);await walkTo(Wd()-140,110);
+ const end=performance.now()+20000;let dir=-1,nt=0,pause=0,p=performance.now();
+ while(true){const t=await frame(),dt=(t-p)/1000;p=t;if(t>end)break;
+  st.textContent=`Вышел целиком и злится: ещё ${Math.ceil((end-t)/1000)} с`;
+  if(pause>0){pause-=dt}else{x+=dir*70*dt;if(x<10){x=10;dir=1}if(x>Wd()-120){x=Wd()-120;dir=-1}eyes.style.transform=`translateX(${dir*3}px)`}
+  if(t>nt){pause=.6;cls('shake',560);thump();say();hop();nt=t+2300}
+  place(0)}
+ bub.classList.remove('on');await walkTo(Wd()+5,160);m.classList.remove('walk','fist');eyes.style.transform='';bye();busy=false;st.textContent='Цикл окончен'}
+async function run(){busy=true;tray.classList.add('ping');
+ try{await peek(1,0);await wait(7);await peek(2,0);await wait(7);await peek(3,1);await wait(7);await rage()}catch(e){}}
+function reset(){rid++;bub.classList.remove('on');m.classList.remove('walk','fist','mad1','mad2','talking');inn.classList.remove('tilt','hop');eyes.style.transform='';lvl=0;tray.classList.remove('ping')}
+async function leave(){const was=busy;busy=false;const vis=x<Wd();reset();if(!was&&!vis){st.textContent='Claude открыт';return}
+ st.textContent='Claude открыт — маскот уходит';if(vis){m.classList.add('walk');try{await walkTo(Wd()+5,320)}catch(e){}m.classList.remove('walk');eyes.style.transform='';bye()}}
+$('go').onclick=()=>{reset();x=Wd()+5;place(0);run()};
+$('cl').onclick=leave;m.onclick=leave;
+x=Wd()+5;place(0);
+setInterval(()=>cls('blink',140),3200);
+</script></body></html>

@@ -1,0 +1,96 @@
+{
+  "name": "mascot",
+  "productName": "Mascot",
+  "version": "1.1.0",
+  "description": "A little orange mascot that peeks out of the screen corner when Claude is waiting for you",
+  "author": "OlegChe77",
+  "license": "MIT",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "icons": "electron tools/make-icons.js",
+    "dist": "electron-builder --win nsis portable --x64",
+    "release": "electron-builder --win nsis portable --x64 --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.11",
+    "koffi": "^3.3.7"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  },
+  "allowScripts": {
+    "electron@45.2.3": true,
+    "koffi@3.3.7": true,
+    "electron-winstaller@5.4.0": true
+  },
+  "build": {
+    "appId": "olegche77.mascot",
+    "productName": "Mascot",
+    "copyright": "OlegChe77",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**",
+      "assets/**",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/koffi/**",
+      "node_modules/@koromix/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "executableName": "Mascot",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "portable": {
+      "artifactName": "Mascot-${version}-portable.exe"
+    },
+    "electronLanguages": [
+      "ru",
+      "en-US"
+    ],
+    "compression": "maximum",
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": true,
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Mascot",
+      "uninstallDisplayName": "Mascot",
+      "artifactName": "Mascot-Setup-${version}.exe"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "OlegChe77",
+        "repo": "claude-mascot",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OlegChe77/claude-mascot.git"
+  },
+  "homepage": "https://github.com/OlegChe77/claude-mascot"
+}
